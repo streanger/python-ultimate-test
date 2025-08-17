@@ -10,8 +10,8 @@ version 1.0
 
 https://streanger.github.io/python-ultimate-test/
 
-## cli
+## command-line
 
-```python
+```bash
 python cli.py
 ```
