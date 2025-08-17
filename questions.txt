@@ -1,0 +1,50 @@
+Have you ever run Python?
+Have you run Python on Linux?
+...On macOS?
+...On Windows?
+Have you run your code in Python IDLE?
+Have you heard about the Zen of Python?
+...Do you follow it?
+Have you heard of PEP8?
+Have you ever read the Python docs (docs.python.org)?
+Have you used Python to automate your work?
+Do you know who Guido van Rossum is?
+Have you ever argued that Python is better than other languages?
+Have you watched any Monty Python movies or series?
+Do you know what PyPI is?
+Have you created any PyPI packages?
+Have you used both Python 2 and Python 3?
+Have you run Python in Jupyter Notebook?
+Have you used Python on a Raspberry Pi?
+Have you used MicroPython?
+Have you run Python on your phone?
+Have you attended any Python meetups?
+Have you been to any PyCon events?
+Have you ever programmed in Python all night long?
+Have you ever run code using `python -c`?
+Do you know what `Ellipsis` object is?
+Have you ever overwritten a built-in?
+...And was it `print`?
+Have you ever created a `cycle` object?
+...And called `list()` on it?
+Have you ever appended a list instance to itself?
+Do you know what a .pyc file is?
+...And a .egg file?
+...And a .whl file?
+Have you created an executable file from your script?
+Has any of your scripts had more than 1000 lines?
+Have you ever written Python code on paper?
+Have you written a snake game in Python?
+Have you ever sent email using Python?
+Have you ever seen `ImportError: attempted relative import...`?
+Have you encountered a `UnicodeDecodeError`?
+Have you encountered a `RecursionError`?
+Do you know what dunder methods are?
+Do you know the difference between `warnings` and `logging.warning`?
+Have you ever used a decorator in your code?
+Have you ever manipulated an abstract syntax tree?
+Have you ever used the `antigravity` module?
+Do you know what the GIL is?
+Have you heard of PyPy, Cython, Jython, or IronPython?
+Do you sometimes host files using `python -m http.server`?
+Do you use the Python shell as a calculator?

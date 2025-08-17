@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Questions</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body.night {
+      background: #222 !important;
+      color: #eee !important;
+    }
+    body.night .table,
+    body.night form,
+    body.night table {
+      background: #222 !important;
+      color: #eee !important;
+    }
+    body.night .table tr,
+    body.night .table td {
+      background: #222 !important;
+      color: #eee !important;
+    }
+    body.night .btn-primary {
+      background: #444;
+      border-color: #444;
+    }
+    body.day {
+      background: #fff !important;
+      color: #212529 !important;
+    }
+    body.day .table,
+    body.day form,
+    body.day table {
+      background: #fff !important;
+      color: #212529 !important;
+    }
+    .table td.answer-cell {
+      width: 120px;
+      white-space: nowrap;
+      text-align: center;
+      vertical-align: middle;
+    }
+    .btn-choice {
+      min-width: 60px;
+      margin: 0 2px;
+      padding: 0.1rem 0.75rem;
+      height: 1.3rem;
+      font-size: 0.9rem;
+      line-height: 1;
+      border-width: 2px;
+      border-radius: 0.35rem;
+      background-color: #e9ecef;
+      border-color: #adb5bd;
+      color: #6c757d;
+      box-shadow: none;
+    }
+    /* Yes button hover/active/checked */
+    .btn-check:checked + .btn-yes,
+    .btn-yes:hover:not(:disabled),
+    .btn-yes:focus:not(:disabled) {
+      background-color: #4B8BBE !important;
+      border-color: #306998 !important;
+      color: #fff !important;
+      box-shadow: 0 0 0 0.2rem #4B8BBE44;
+    }
+    /* No button hover/active/checked */
+    .btn-check:checked + .btn-no,
+    .btn-no:hover:not(:disabled),
+    .btn-no:focus:not(:disabled) {
+      background-color: #FFE873 !important;
+      border-color: #FFD43B !important;
+      color: #222 !important;
+      box-shadow: 0 0 0 0.2rem #FFD43B44;
+    }
+    /* Disabled state */
+    .btn-yes:disabled, .btn-no:disabled {
+      background-color: #e9ecef !important;
+      border-color: #adb5bd !important;
+      color: #adb5bd !important;
+      cursor: not-allowed;
+      box-shadow: none !important;
+    }
+  </style>
+</head>
+<body class="p-4">
+<!-- github corner -->
+<a href="https://github.com/streanger/python-ultimate-test" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+  <div class="container">
+    <h2 class="text-center mb-4">the ultimate Python programmer test</h2>
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-8">
+        <form id="qaForm">
+          <table id="questions" class="table table-striped border-0 mb-0">
+            <tbody>
+              <tr>
+                <td>1. Have you ever run Python?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q1" id="q1-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q1-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q1" id="q1-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q1-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>2. Have you run Python on Linux?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q2" id="q2-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q2-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q2" id="q2-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q2-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>3. ...On macOS?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q3" id="q3-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q3-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q3" id="q3-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q3-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>4. ...On Windows?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q4" id="q4-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q4-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q4" id="q4-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q4-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>5. Have you run your code in Python IDLE?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q5" id="q5-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q5-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q5" id="q5-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q5-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>6. Have you heard about the Zen of Python?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q6" id="q6-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q6-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q6" id="q6-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q6-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>7. ...Do you follow it?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q7" id="q7-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q7-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q7" id="q7-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q7-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>8. Have you heard of PEP8?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q8" id="q8-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q8-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q8" id="q8-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q8-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>9. Have you ever read the Python docs (docs.python.org)?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q9" id="q9-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q9-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q9" id="q9-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q9-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>10. Have you used Python to automate your work?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q10" id="q10-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q10-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q10" id="q10-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q10-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>11. Do you know who Guido van Rossum is?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q11" id="q11-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q11-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q11" id="q11-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q11-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>12. Have you ever argued that Python is better than other languages?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q12" id="q12-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q12-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q12" id="q12-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q12-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>13. Have you watched any Monty Python movies or series?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q13" id="q13-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q13-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q13" id="q13-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q13-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>14. Do you know what PyPI is?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q14" id="q14-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q14-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q14" id="q14-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q14-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>15. Have you created any PyPI packages?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q15" id="q15-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q15-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q15" id="q15-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q15-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>16. Have you used both Python 2 and Python 3?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q16" id="q16-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q16-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q16" id="q16-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q16-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>17. Have you run Python in Jupyter Notebook?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q17" id="q17-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q17-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q17" id="q17-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q17-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>18. Have you used Python on a Raspberry Pi?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q18" id="q18-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q18-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q18" id="q18-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q18-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>19. Have you used MicroPython?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q19" id="q19-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q19-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q19" id="q19-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q19-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>20. Have you run Python on your phone?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q20" id="q20-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q20-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q20" id="q20-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q20-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>21. Have you attended any Python meetups?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q21" id="q21-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q21-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q21" id="q21-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q21-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>22. Have you been to any PyCon events?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q22" id="q22-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q22-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q22" id="q22-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q22-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>23. Have you ever programmed in Python all night long?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q23" id="q23-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q23-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q23" id="q23-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q23-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>24. Have you ever run code using <code class="bg-light px-1 rounded">python -c</code>?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q24" id="q24-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q24-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q24" id="q24-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q24-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>25. Do you know what <code class="bg-light px-1 rounded">Ellipsis</code> object is?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q25" id="q25-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q25-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q25" id="q25-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q25-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>26. Have you ever overwritten a built-in?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q26" id="q26-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q26-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q26" id="q26-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q26-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>27. ...And was it <code class="bg-light px-1 rounded">print</code>?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q27" id="q27-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q27-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q27" id="q27-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q27-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>28. Have you ever created a <code class="bg-light px-1 rounded">cycle</code> object?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q28" id="q28-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q28-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q28" id="q28-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q28-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>29. ...And called <code class="bg-light px-1 rounded">list()</code> on it?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q29" id="q29-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q29-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q29" id="q29-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q29-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>30. Have you ever appended a list instance to itself?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q30" id="q30-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q30-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q30" id="q30-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q30-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>31. Do you know what a .pyc file is?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q31" id="q31-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q31-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q31" id="q31-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q31-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>32. ...And a .egg file?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q32" id="q32-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q32-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q32" id="q32-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q32-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>33. ...And a .whl file?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q33" id="q33-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q33-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q33" id="q33-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q33-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>34. Have you created an executable file from your script?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q34" id="q34-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q34-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q34" id="q34-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q34-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>35. Has any of your scripts had more than 1000 lines?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q35" id="q35-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q35-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q35" id="q35-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q35-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>36. Have you ever written Python code on paper?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q36" id="q36-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q36-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q36" id="q36-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q36-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>37. Have you written a snake game in Python?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q37" id="q37-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q37-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q37" id="q37-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q37-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>38. Have you ever sent email using Python?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q38" id="q38-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q38-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q38" id="q38-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q38-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>39. Have you ever seen <code class="bg-light px-1 rounded">ImportError: attempted relative import...</code>?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q39" id="q39-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q39-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q39" id="q39-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q39-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>40. Have you encountered a <code class="bg-light px-1 rounded">UnicodeDecodeError</code>?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q40" id="q40-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q40-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q40" id="q40-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q40-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>41. Have you encountered a <code class="bg-light px-1 rounded">RecursionError</code>?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q41" id="q41-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q41-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q41" id="q41-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q41-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>42. Do you know what dunder methods are?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q42" id="q42-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q42-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q42" id="q42-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q42-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>43. Do you know the difference between <code class="bg-light px-1 rounded">warnings</code> and <code class="bg-light px-1 rounded">logging.warning</code>?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q43" id="q43-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q43-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q43" id="q43-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q43-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>44. Have you ever used a decorator in your code?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q44" id="q44-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q44-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q44" id="q44-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q44-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>45. Have you ever manipulated an abstract syntax tree?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q45" id="q45-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q45-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q45" id="q45-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q45-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>46. Have you ever used the <code class="bg-light px-1 rounded">antigravity</code> module?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q46" id="q46-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q46-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q46" id="q46-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q46-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>47. Do you know what the GIL is?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q47" id="q47-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q47-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q47" id="q47-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q47-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>48. Have you heard of PyPy, Cython, Jython, or IronPython?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q48" id="q48-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q48-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q48" id="q48-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q48-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>49. Do you sometimes host files using <code class="bg-light px-1 rounded">python -m http.server</code>?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q49" id="q49-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q49-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q49" id="q49-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q49-no">No</label>
+                </td>
+              </tr>
+              <tr>
+                <td>50. Do you use the Python shell as a calculator?</td>
+                <td class="answer-cell">
+                  <input type="radio" class="btn-check" name="q50" id="q50-yes" value="yes" required autocomplete="off">
+                  <label class="btn btn-choice btn-yes" for="q50-yes">Yes</label>
+                  <input type="radio" class="btn-check" name="q50" id="q50-no" value="no" autocomplete="off">
+                  <label class="btn btn-choice btn-no" for="q50-no">No</label>
+                </td>
+              </tr>
+          </tbody>
+        </table>
+        <div class="text-center mt-3">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  </div>
+  <script>
+    // Day/night mode based on current hour
+    const hour = new Date().getHours();
+    const table = document.getElementById('questions');
+    if (hour >= 19 || hour < 7) { // night: 7pm–7am
+      document.body.classList.add('night');
+      table.classList.add('table-dark');
+    } else {
+      table.classList.add('table-light');
+      document.body.classList.add('day');
+    }
+
+    // Count yes answers
+    document.getElementById('qaForm').onsubmit = function(e) {
+      e.preventDefault();
+      let count = 0;
+      for(let i=1; i<=100; i++) {
+        let answer = document.querySelector('input[name="q'+i+'"]:checked');
+        if(answer && answer.value === 'yes') count++;
+      }
+      window.location.href = 'results.html?count=' + count;
+    }
+  </script>
+<footer class="text-center py-3">
+  <hr>
+  &copy; 2025 <a href="https://github.com/streanger" target="_blank">streanger</a>
+</footer>
+</body>
+</html>
